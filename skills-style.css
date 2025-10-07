@@ -1,0 +1,105 @@
+#skills{
+    display: flex;
+    flex-direction: column;
+}
+
+#skills .head{
+    font-size: 20px;
+    text-align: center;
+    background-color: var(--base-heading-clr);
+    margin: 0 0.15em;
+    margin-top: 0.6em;
+}
+
+#skills .web{
+    background-color: var(--base-clr);
+    margin: 0.5em 2em;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    ul{
+        list-style: none;
+        margin-top: 0.5em;
+    }
+}
+
+
+#skills .web ul li{
+    padding: 0.3em;
+    text-align: center;
+    position: relative;
+    &:hover{
+        background-color: var(--hover-clr);
+        border-radius: 10px;
+    }
+}
+
+
+
+/* Animation */
+
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.darkmode #skills .web{
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+    isolation: isolate;
+    background: transparent;
+    /* background-color: var(--text-clr); */
+}
+
+.darkmode #skills .web::before{
+    content: '';
+    position: absolute;
+    border-radius: inherit;
+    background-image: repeating-conic-gradient(from var(--angle), #008cff, #e100ff, #008cff);
+    animation: 3s spin linear infinite;
+    height: calc(100% + 4px);
+    width: calc(100% + 4px);
+    top: -2px;
+    left: -2px;
+    z-index: -2;
+    filter: blur(1.5em);
+}
+
+
+.darkmode #skills .web::after{
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: 8px;
+    background: var(--base-clr);
+    z-index: -1;
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+    to{
+        --angle: 360deg;
+    }
+}
+
+
+/* Media queries */
+@media screen and (min-width: 730px){
+    #skills{
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    #skills .web{
+        flex: 1;
+    }
+    #skills .web ul{
+    margin: 1em;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1em;
+    }
+}

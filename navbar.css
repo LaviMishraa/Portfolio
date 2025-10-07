@@ -1,0 +1,153 @@
+#navbar{
+    display: flex;;
+}
+
+#navbar .logo{
+    display: none;
+}
+
+#navbar .menu-open, #navbar .mode-set{
+    svg{
+        margin: 1em;
+    }
+}
+
+#navbar .mode-set{
+    margin-left: auto;
+}
+
+#navbar #sidebar{
+    background-color: color-mix(in srgb, var(--base-clr) 85%, transparent);
+
+    height: 100vh;
+    
+    position: fixed;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    z-index: 100;
+}
+
+/* To hide: will control it from JS */
+#sidebar.hide{
+    transition: ease-in 200ms;
+    left: -100%;
+}
+
+/* To show: will control it from js */
+#sidebar.show{
+    transition: ease-out 300ms;
+    left: 0;
+}
+
+#navbar #sidebar ul{
+    list-style: none;
+}
+
+
+#navbar #sidebar ul button{
+    width: 100%;
+    padding: 1em 4em;
+    a{
+        text-decoration: none;
+        width: 100%;
+    }
+}
+
+#navbar #sidebar button:hover{
+    background-color: var(--hover-clr);
+}
+
+
+#navbar #sidebar .close-menubar{
+    margin: 1em;
+    margin-left: auto;
+}
+
+#navbar #sidebar .close-menubar:hover{
+    background-color: unset;
+}
+
+#overlay{
+    background-color: rgba(0, 0, 0, 0.5);
+    inset: 0;
+    position: fixed;
+    z-index: 50;
+    display: none;
+}
+
+#sidebar.show ~ #overlay{
+    display: block;
+}
+
+
+
+/* Media query */
+@media screen and (min-width: 730px){
+
+    #navbar{
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background-color: var(--base-varient-clr);
+        
+    }
+
+    #navbar.nav-shadow{
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    #navbar .logo{
+        display: block;
+        padding:  0 1em;
+        align-self: center;
+        transition: 200ms ease-in;
+        &:hover{
+            transform: scale(1.2);
+        }
+        a{
+            font-weight: 800;
+            font-size: 2em;
+            text-decoration: none;
+        }
+    }
+    #navbar .close-menubar{
+        display: none;
+    }
+    #navbar .menu-open{
+        display: none;
+    }
+
+    #navbar #sidebar{
+        left: unset;
+        position: unset;
+        flex-direction: row;
+        height: unset;
+        background-color: var(--base-varient-clr);
+        margin-right: 1em;
+        ul{
+            display: flex;
+        }
+    }
+
+    #navbar #sidebar ul button{
+        padding: 0.5em 2em;
+        a{
+            font-size: 1.2em;
+        }
+    }
+
+    /* Darkmode */
+    .darkmode #navbar.nav-shadow{
+        box-shadow: 0px 1px 11px rgba(255, 255, 255, 0.786)
+    }
+    
+
+    .darkmode #navbar #sidebar{
+        height: 90%;
+        align-self: center;
+    }
+
+}

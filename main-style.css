@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Style+Script&display=swap');
+
+
+.lightmode{
+    --base-clr: #C2FFC7;
+    --base-varient-clr: #9EDF9C;
+    --base-heading-clr: #83CA81;
+    --hover-clr: #62825D;
+    --final-clr: #526E48;
+    --text-clr: #000000;
+    --text-op-clr: white;
+    --highlight-clr: #526E48;
+}
+
+.darkmode{
+    --base-clr: #252832;
+    --base-varient-clr: #11121a;
+    --base-heading-clr: #40475e;
+    --hover-clr: #4a4c52;
+    --final-clr: #9290C3;
+    --text-clr: #ffffff;
+    --text-op-clr: black;
+    --highlight-clr: #5e63ff;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--text-clr);
+    font-family: "Baloo Paaji 2",  sans-serif;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: var(--base-clr);
+}
+
+#base{
+    background-color: var(--base-varient-clr);
+}
+
+svg{
+    fill: var(--text-clr);
+}
+
+button{
+    border: none;
+    background: none;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.page-heading{
+    margin: 3em 2em 1em 2em;
+    text-align: center;
+
+    p{
+        font-size: 12px;
+        line-height: 1;
+    }
+
+    span{
+        font-family: 'Poppins', sans-serif;
+        line-height: 1;
+        font-size: 50px;
+    }
+}
+
+
+
+@media screen and (min-width: 1024px){
+    #base{
+        max-width: 1035px;
+        justify-self: center;
+    }
+
+    .page-heading{
+        margin-top: 6em;
+        margin-bottom: 4em;
+        p{
+            font-size: 20px;
+        }
+
+        span{
+            font-size: 70px;
+        }
+    }
+
+    body {
+        position: relative;
+    }
+
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('../Images/forest-image.jpg');
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+        opacity: 0.8;
+    }
+
+    body.darkmode::before {
+        content: '';
+        background-image: url('../Images/city-image.jpg');
+    }
+}
